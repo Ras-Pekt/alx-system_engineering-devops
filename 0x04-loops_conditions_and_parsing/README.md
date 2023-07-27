@@ -6,4 +6,6 @@ This directorty contains scripts that demonstrate the use loops conditions and p
 - [3-until_best_school](3-until_best_school) - displays Best School 10 times using until
 - [4-if_9_say_hi](4-if_9_say_hi) - displays Best School 10 times, but for the 9th iteration, displays Best School and then Hi on a new line
 - [5-4_bad_luck_8_is_your_chance](5-4_bad_luck_8_is_your_chance) - loops from 1 to 10
-- [6-superstitious_numbers](6-superstitious_numbers) - 
+- [6-superstitious_numbers](6-superstitious_numbers) - displays numbers from 1 to 20
+- [7-clock](7-clock) -  displays the time for 12 hours and 59 minutes
+-
