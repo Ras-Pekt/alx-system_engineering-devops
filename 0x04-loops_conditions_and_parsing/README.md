@@ -8,4 +8,5 @@ This directorty contains scripts that demonstrate the use loops conditions and p
 - [5-4_bad_luck_8_is_your_chance](5-4_bad_luck_8_is_your_chance) - loops from 1 to 10
 - [6-superstitious_numbers](6-superstitious_numbers) - displays numbers from 1 to 20
 - [7-clock](7-clock) -  displays the time for 12 hours and 59 minutes
--
+- [8-for_ls](8-for_ls) - displays the content of the current directory in a list format where only the part of the name after the first dash is displayed
+- 
