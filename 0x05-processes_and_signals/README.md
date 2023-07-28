@@ -6,3 +6,5 @@ This directory contains scripts on Linux processes and signal management
 - [3-show_your_bash_pid_made_easy](3-show_your_bash_pid_made_easy) - displays the PID, along with the process name, of processes whose name contain the word bash
 - [4-to_infinity_and_beyond](4-to_infinity_and_beyond) - displays To infinity and beyond indefinitely
 - [5-dont_stop_me_now](5-dont_stop_me_now) - stops 4-to_infinity_and_beyond process
+- [6-stop_me_if_you_can](6-stop_me_if_you_can) - stops 4-to_infinity_and_beyond process without using kill
+- [7-highlander](7-highlander) - 
