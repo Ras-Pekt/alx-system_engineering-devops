@@ -5,14 +5,14 @@
 # Displays "Y U no love me?!" when receiving a SIGINT signal
 # Deletes the file /var/run/myscript.pid and terminates itself when receiving a SIGQUIT or SIGTERM signal
 
-trap 'echo "I hate the kill command"; rm -f "/var/run/myscript.pid"; pkill -f -KILL "100-process_and_pid_file"' SIGTERM
+trap 'echo "I hate the kill command"; rm -f "/var/run/myscript.pid"; exit 0' SIGTERM
 
-trap 'rm -f "/var/run/myscript.pid"; pkill -f -KILL "100-process_and_pid_file"' SIGQUIT
+trap 'rm -f "/var/run/myscript.pid"; exit 0' SIGQUIT
 
 trap 'echo "Y U no love me?!"' SIGINT
 
 proc_id=$$
-echo "$proc_id" >> "/var/run/myscript.pid"
+echo "$proc_id" > "/var/run/myscript.pid"
 
 while true
 do
