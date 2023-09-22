@@ -1,6 +1,6 @@
 # installs flask
 
-file { 'Flask':
+package { 'Flask':
   ensure  => '2.1.0',
   provide => 'pip3',
 }
