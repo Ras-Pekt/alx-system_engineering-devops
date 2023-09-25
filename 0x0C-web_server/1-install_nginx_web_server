@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # installs and configures nginx
 
-if ! command -v nginx &> /dev/null
+if ! which nginx > /dev/null
 then
-	sudo apt update && sudo apt install -y nginx
+	sudo apt update
+	sudo apt install -y nginx
 fi
 
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
