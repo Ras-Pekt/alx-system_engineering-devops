@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # installs and configures nginx
 
-if ! which nginx > /dev/null
+if ! command -v nginx &> /dev/null
 then
 	sudo apt update && sudo apt install -y nginx
 fi
