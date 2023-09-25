@@ -7,6 +7,6 @@ then
 	sudo apt update && sudo apt install -y nginx
 fi
 
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
 sudo service nginx restart
