@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Configures Nginx server to redirect /redirect_me to another page
 
-if ! which nginx > /dev/null
-then
-	sudo apt-get update
-	sudo apt-get install nginx -y
-fi
+# if ! which nginx > /dev/null
+# then
+# 	sudo apt-get update
+# 	sudo apt-get install nginx -y
+# fi
 
-# sudo apt-get update
-# sudo apt-get install nginx -y
+sudo apt-get update
+sudo apt-get install nginx -y
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 old_block="server_name _;"
