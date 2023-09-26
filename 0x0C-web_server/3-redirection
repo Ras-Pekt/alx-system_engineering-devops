@@ -7,8 +7,12 @@ then
 	sudo apt-get install nginx -y
 fi
 
+# sudo apt-get update
+# sudo apt-get install nginx -y
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
 old_block="server_name _;"
 new_block="server_name _;\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v\=SsoOG6ZeyUI;\n\t}"
 
 sudo sed -i "s/$old_block/$new_block/" /etc/nginx/sites-available/default
-sudo service nginx restart
+sudo service nginx start
