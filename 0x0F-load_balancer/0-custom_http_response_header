@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# configures a new server
+
+if ! command -v nginx &>/dev/null
+then
+	sudo apt-get update
+	sudo apt-get install nginx -y
+fi
+
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_error.html > /dev/null
+
+first_block="server_name _;"
+
+# second_block="server_name _;\n\n\tadd_header X-Served-By $HOSTNAME;"
+
+# sudo sed -i "s/$first_block/$second_block/" /etc/nginx/sites-available/default
+
+new_block="server_name _;\n\n\tadd_header X-Served-By $HOSTNAME;\n\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v\=SsoOG6ZeyUI;\n\t}\n\n\terror_page 404 \/custom_error.html;\n\tlocation = \/custom_error.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+
+sudo sed -i "s/$first_block/$new_block/" /etc/nginx/sites-available/default
+
+sudo service nginx reload
