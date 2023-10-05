@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# configures a server to specific requirements
+
+first_block1="listen 8080 default_server;"
+second_block1="listen 80 default_server;"
+
+sudo sed -i "s/$first_block1/$second_block1/" /etc/nginx/sites-enabled/default
+
+first_block2="listen [::]:8080 default_server ipv6only=on;"
+second_block2="listen [::]:80 default_server ipv6only=on;"
+
+sudo sed -i "s/$first_block2/$second_block2/" /etc/nginx/sites-enabled/default
+
+sudo service nginx reload
