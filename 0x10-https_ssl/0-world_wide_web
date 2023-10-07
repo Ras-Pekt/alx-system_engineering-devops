@@ -10,7 +10,7 @@ subdomain_info() {
 
 if [ $# -eq 1 ]
 then
-	SUBDOMAIN_ARRAY=("www" "web-01" "web-02" "lb-01")
+	SUBDOMAIN_ARRAY=("www" "lb-01" "web-01" "web-02")
 	for sub_domain in "${SUBDOMAIN_ARRAY[@]}"
 	do
 		subdomain_info "$1" "$sub_domain"
