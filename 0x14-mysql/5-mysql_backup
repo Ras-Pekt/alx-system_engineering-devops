@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# creates a compressed dump of all databases
+
+MYSQL_USER="root"
+MYSQL_PASSWD="$1"
+MYSQL_DUMP="backup.sql"
+MYSQL_ARCHIVE="$(date +'%d-%m-%Y').tar.gz"
+
+mysqldump -u"$MYSQL_USER" -p"$MYSQL_PASSWD" --all-databases > "$MYSQL_DUMP"
+tar -czvf "$MYSQL_ARCHIVE" "$MYSQL_DUMP"
