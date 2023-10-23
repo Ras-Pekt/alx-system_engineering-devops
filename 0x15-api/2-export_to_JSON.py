@@ -19,6 +19,8 @@ if __name__ == "__main__":
 
     employee_name = user_response.json().get("name")
 
+    employee_username = user_response.json().get("username")
+
     url_response = requests.get(todos_url)
 
     total_tasks = len(url_response.json())
@@ -27,32 +29,30 @@ if __name__ == "__main__":
     completed_tasks = 0
 
     task_json = {}
-    task_dict = {}
     task_dict_list = []
 
     for task in url_response.json():
+        task_dict = {}
+
         task_status = task.get("completed")
         task_name = task.get("title")
 
         task_dict["task"] = task_name
         task_dict["completed"] = task_status
-        task_dict["username"] = employee_name
+        task_dict["username"] = employee_username
+
         task_dict_list.append(task_dict)
 
         # if task_status:
         #     task_list.append(task.get("title"))
         #     completed_tasks += 1
 
-    print(task_dict)
     task_json[employee_id] = task_dict_list
-    print(task_json)
 
     # print("Employee {} is done with tasks({}/{}):".
     #       format(employee_name, completed_tasks, total_tasks))
     # for task in task_list:
     #     print(f"\t {task}")
 
-    print(task_json)
-
-    # with open(filename, "w") as file_json:
-    #     json.dump(task_json, file_json)
+    with open(filename, "w") as file_json:
+        json.dump(task_json, file_json, indent=2)
