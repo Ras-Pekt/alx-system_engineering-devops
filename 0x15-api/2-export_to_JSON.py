@@ -39,18 +39,20 @@ if __name__ == "__main__":
         task_dict["username"] = employee_name
         task_dict_list.append(task_dict)
 
-        if task_status:
-            task_list.append(task.get("title"))
-            completed_tasks += 1
+        # if task_status:
+        #     task_list.append(task.get("title"))
+        #     completed_tasks += 1
 
+    print(task_dict)
     task_json[employee_id] = task_dict_list
+    print(task_json)
 
-    print("Employee {} is done with tasks({}/{}):".
-          format(employee_name, completed_tasks, total_tasks))
-    for task in task_list:
-        print(f"\t {task}")
+    # print("Employee {} is done with tasks({}/{}):".
+    #       format(employee_name, completed_tasks, total_tasks))
+    # for task in task_list:
+    #     print(f"\t {task}")
 
-    # print(task_json)
+    print(task_json)
 
-    with open(filename, "w") as file_json:
-        json.dump(task_json, file_json)
+    # with open(filename, "w") as file_json:
+    #     json.dump(task_json, file_json)

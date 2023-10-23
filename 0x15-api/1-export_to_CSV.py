@@ -22,6 +22,8 @@ if __name__ == "__main__":
 
     employee_name = user_response.json().get("name")
 
+    employee_username = user_response.json().get("username")
+
     url_response = requests.get(todos_url)
 
     total_tasks = len(url_response.json())
@@ -35,7 +37,7 @@ if __name__ == "__main__":
 
         csv_writer.writerow([
             employee_id,
-            employee_name,
+            employee_username,
             task_status,
             task_name
         ])
