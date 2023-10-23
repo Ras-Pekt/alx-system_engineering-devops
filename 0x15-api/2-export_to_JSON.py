@@ -1,18 +1,15 @@
 #!/usr/bin/python3
 """
-a Python script to export data in the CSV format
+a Python script to export data in the JSON format
 """
 
 if __name__ == "__main__":
     import requests
     from sys import argv
-    import csv
+    import json
 
     employee_id = argv[1]
-    filename = f"{employee_id}.csv"
-
-    csv_file = open(filename, 'w')
-    csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
+    filename = f"{employee_id}.json"
 
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos".\
@@ -29,24 +26,31 @@ if __name__ == "__main__":
     task_list = []
     completed_tasks = 0
 
+    task_json = {}
+    task_dict = {}
+    task_dict_list = []
+
     for task in url_response.json():
         task_status = task.get("completed")
         task_name = task.get("title")
 
-        csv_writer.writerow([
-            employee_id,
-            employee_name,
-            task_status,
-            task_name
-        ])
+        task_dict["task"] = task_name
+        task_dict["completed"] = task_status
+        task_dict["username"] = employee_name
+        task_dict_list.append(task_dict)
 
         if task_status:
             task_list.append(task.get("title"))
             completed_tasks += 1
 
-    csv_file.close()
+    task_json[employee_id] = task_dict_list
 
     print("Employee {} is done with tasks({}/{}):".
           format(employee_name, completed_tasks, total_tasks))
     for task in task_list:
         print(f"\t {task}")
+
+    # print(task_json)
+
+    with open(filename, "w") as file_json:
+        json.dump(task_json, file_json)
