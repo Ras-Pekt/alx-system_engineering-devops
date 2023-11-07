@@ -18,11 +18,7 @@ def top_ten(subreddit):
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
-        # hot_list = []
         for key in response.json().get("data").get("children"):
             print(f"{key.get('data').get('title')}")
-    #         hot_list.append(key.get('data').get('title'))
-    #     if len(hot_list) == 0:
-    #         print("None")
-    # else:
+    else:
         print("None")
