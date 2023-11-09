@@ -18,7 +18,7 @@ def count_words(subreddit, word_list, after=None):
     if after is not None:
         url += f"?after={after}"
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, allow_redirects=False)
 
     data = response.json().get('data', {})
 
