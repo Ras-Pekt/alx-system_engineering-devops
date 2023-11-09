@@ -15,14 +15,10 @@ def count_words(subreddit, word_list, after=None):
             Gecko/20080214 Firefox/2.0.0.12",
     }
 
-    params = {'after': after}
+    if after is not None:
+        url += f"?after={after}"
 
-    response = requests.get(
-        url,
-        headers=headers,
-        params=params,
-        allow_redirects=False
-    )
+    response = requests.get(url, headers=headers, allow_redirects=False)
 
     data = response.json().get('data', {})
 
@@ -31,7 +27,7 @@ def count_words(subreddit, word_list, after=None):
         return None
 
     for post in posts:
-        word_list.append(post.get('data', {}).get('title'))
+        word_list.append(post.get('data').get('title'))
 
     after = data.get('after')
     if after is None:
