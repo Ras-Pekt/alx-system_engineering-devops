@@ -17,8 +17,12 @@ def count_words(subreddit, word_list, after=None):
 
     params = {'after': after}
 
-    response = requests.get(url, headers=headers, params=params,
-                       allow_redirects=False)
+    response = requests.get(
+        url,
+        headers=headers,
+        params=params,
+        allow_redirects=False
+    )
 
     data = response.json().get('data', {})
 
